@@ -1,10 +1,9 @@
 library weather;
 
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:weather/pages/test_page.dart';
 import 'package:weather/pages/weather_page.dart';
-import 'package:weather/repository/remote_config_manager.dart';
+import 'package:weather/repository/api_manager.dart';
 
 class Weather {
   static Map<String, Widget Function(BuildContext)> routes() {
@@ -14,11 +13,7 @@ class Weather {
     };
   }
 
-  static void initFirebase() {
-    final Future<FirebaseApp> _initialization = Firebase.initializeApp();
-
-    _initialization.then((value) {
-      RemoteConfigManager().init();
-    });
+  static addApiKey(String apiKey) {
+    ApiManager.instance.addKey(apiKey);
   }
 }

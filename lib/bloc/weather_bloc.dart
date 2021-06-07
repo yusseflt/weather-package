@@ -20,6 +20,7 @@ class WeatherBloc {
       _weatherSubject!.sink.add(weather);
     } catch (e) {
       _weatherSubject!.addError(e);
+      throw e;
     }
   }
 }
